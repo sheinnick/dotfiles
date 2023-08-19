@@ -1,0 +1,6 @@
+[user]
+	name = Nikita Shein
+[core]
+	editor = nano -w
+[init]
+	defaultBranch = main

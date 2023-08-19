@@ -1,0 +1,3 @@
+alias postgres_local='/opt/homebrew/opt/postgresql@14/bin/postgres -D /opt/homebrew/var/postgresql@14'
+alias wifi_reset='sudo ifconfig en0 down ; sudo ifconfig en0 up'
+alias cron_edit='EDITOR=nano crontab -e'
