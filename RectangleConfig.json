@@ -50,7 +50,7 @@
 
     },
     "doubleClickTitleBar" : {
-      "int" : 0
+      "int" : 3
     },
     "doubleClickTitleBarRestore" : {
       "int" : 0
