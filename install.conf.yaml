@@ -1,0 +1,49 @@
+- defaults:
+    link:
+      create: true
+    shell:
+      stderr: true
+
+
+- shell:
+  - command: ./00_install_brew_and_other_before_ansible.sh
+    stdin: true
+    stdout: true
+    description: Running pre installation script
+  - command: osx/osx_set_defaults.sh
+    stdin: true
+    stdout: true
+    description: set macOS settings
+
+- clean: ['~', '~/.oh-my-zsh/plugins/', '~/.oh-my-zsh/themes/']
+
+- link:
+    ~/.bashrc: 
+      force: true
+      path: .bashrc
+    ~/.zprofile:
+      force: true
+      path: .zprofile
+    ~/.zshrc:
+      force: true
+      path: .zshrc
+    ~/.aliases:
+      force: true
+      path: .aliases
+    ~/.oh-my-zsh/plugins/zsh-autosuggestions:
+      force: true
+      path: oh-my-zsh/custom/plugins/zsh-autosuggestions/
+    ~/.oh-my-zsh/plugins/zsh-syntax-highlighting:
+      force: true
+      path: oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
+    
+    # Git
+    ~/.gitignore: git/.gitignore
+    ~/.gitconfig: git/.gitconfig
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    - command: ./01_run-ansible.sh
+      stdin: true
+      stdout: true
+      description: Pouring software

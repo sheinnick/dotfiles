@@ -2,5 +2,6 @@
 	name = Nikita Shein
 [core]
 	editor = nano -w
+	excludesFile = ~/.gitignore
 [init]
 	defaultBranch = main

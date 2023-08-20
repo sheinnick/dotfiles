@@ -1,0 +1,34 @@
+---
+  - name: Add required homebrew repos
+    homebrew_tap:
+      name: homebrew/cask-fonts
+
+  - name: apps for macos
+    homebrew_cask:
+      name:
+        - alt-tab
+        - amitv87-pip
+        - bartender
+        - font-sauce-code-pro-nerd-font
+        - kap
+        - kap
+        - keycastr
+        - maccy
+        - openin
+        - rectangle
+        - shottr
+        - the-unarchiver
+        - vlc
+        - google-chrome
+        - google-drive
+        - iterm2
+  
+  - name: Reduce macos noise
+    osx_defaults:
+      key: "{{ item.key }}"
+      domain: "{{ item.domain }}"
+      value: "{{ item.value }}"
+    loop:
+      - domain: com.apple.dock
+        key: no-bouncing
+        value: TRUE

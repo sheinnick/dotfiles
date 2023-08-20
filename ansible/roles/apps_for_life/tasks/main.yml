@@ -6,7 +6,6 @@
   - name: Ensure console utils are installed
     homebrew:
       name:
-        - ansible-lint
         - bash-completion
         - bat
         - dive
@@ -14,26 +13,11 @@
         - ffmpeg
         - gh
         - git
-        - httpie
-        - jq
         - mc
         - mtr
         - nmap
-        - node
-        - python3
         - youtube-dl
-
-  - name: apps for work
-    homebrew_cask:
-      name:
-        - dbeaver-community
-        - fork
-        - google-chrome
-        - google-cloud-sdk
-        - google-drive
-        - iterm2
-        - slack
-        - visual-studio-code
+        - zsh-syntax-highlighting
 
   - name: apps for life
     homebrew_cask:
@@ -41,11 +25,15 @@
         - deepl
         - discord
         - firefox
+        - foxitreader
         - notion
         - obsidian
         - protonvpn
         - spotify
         - zoom
+        - google-chrome
+        - google-drive
+        - iterm2
 
   - name: apps for macos
     homebrew_cask:
@@ -58,16 +46,12 @@
         - kap
         - keycastr
         - maccy
+        - openin
         - rectangle
         - shottr
         - the-unarchiver
         - vlc
 
-  - name: Ensure python and node version managers are installed
-    homebrew:
-      name:
-        - pyenv
-        - n
   
   - name: Reduce macos noise
     osx_defaults:
