@@ -34,6 +34,7 @@
         - google-chrome
         - google-drive
         - iterm2
+        - logi-options-plus
 
   - name: apps for macos
     homebrew_cask:
