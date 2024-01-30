@@ -22,6 +22,7 @@
   - name: apps for life
     homebrew_cask:
       name:
+        - anki
         - deepl
         - discord
         - firefox
@@ -43,7 +44,6 @@
         - amitv87-pip
         - bartender
         - font-sauce-code-pro-nerd-font
-        - kap
         - kap
         - keycastr
         - maccy
