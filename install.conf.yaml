@@ -41,6 +41,10 @@
     ~/.gitignore: git/.gitignore
     ~/.gitconfig: git/.gitconfig
 
+    ~/.config/karabiner/karabiner.json:
+      force: true
+      path: ./karabiner.json
+
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
     - command: ./01_run-ansible.sh
