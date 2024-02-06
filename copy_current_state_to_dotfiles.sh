@@ -7,3 +7,5 @@ cp -R   ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting  ./oh-my-zsh/custom/
 
 cp ~/.gitconfig ./git/.gitconfig
 cp ~/.gitignore ./git/.gitignore
+
+cp ~/.config/karabiner/karabiner.json ./karabiner.json
