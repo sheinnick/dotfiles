@@ -18,6 +18,57 @@
                 },
                 "rules": [
                     {
+                        "description": "Change keyboard layout on cmd press",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_command",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_command"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "select_input_source": {
+                                            "input_source_id": "^org.sil.ukelele.keyboardlayout.t.english-ilyabirmantypography$"
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "right_command",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "right_command"
+                                    }
+                                ],
+                                "to_if_alone": [
+                                    {
+                                        "select_input_source": {
+                                            "input_source_id": "^org.sil.ukelele.keyboardlayout.t.russian-ilyabirmantypography$"
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "finder: mouse back",
                         "manipulators": [
                             {
