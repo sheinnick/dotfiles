@@ -10,7 +10,6 @@
         - bash-completion
         - bat
         - dive
-        - exa
         - gh
         - git
         - httpie
@@ -33,7 +32,6 @@
         - iterm2
         - slack
         - visual-studio-code
-        - font-jetbrains-mono
 
   - name: Ensure python and node version managers are installed
     homebrew:

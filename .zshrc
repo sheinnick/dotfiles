@@ -22,15 +22,16 @@ ZSH_CUSTOM="$HOME/.oh-my-zsh"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-	git
 	aliases
 	brew
-	history
-	themes
+	copyfile
 	dotenv
+	git
+	history
+	poetry
+	themes
 	zsh-autosuggestions 
 	zsh-syntax-highlighting
-	copyfile
 )
 
 source $ZSH/oh-my-zsh.sh

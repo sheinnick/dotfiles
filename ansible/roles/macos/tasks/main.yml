@@ -6,21 +6,25 @@
   - name: apps for macos
     homebrew_cask:
       name:
+        - iterm2
         - alt-tab
         - amitv87-pip
         - bartender
+        - firefox
+        - font-jetbrains-mono
         - font-sauce-code-pro-nerd-font
+        - google-chrome
+        - google-drive
+        - ilya-birman-typography-layout
         - kap
+        - karabiner-elements
         - keycastr
         - maccy
-        - openin
+        - raycast
         - rectangle
         - shottr
         - the-unarchiver
         - vlc
-        - google-chrome
-        - google-drive
-        - iterm2
   
   - name: Reduce macos noise
     osx_defaults:

@@ -9,7 +9,6 @@
         - bash-completion
         - bat
         - dive
-        - exa
         - ffmpeg
         - gh
         - git
@@ -22,45 +21,18 @@
   - name: apps for life
     homebrew_cask:
       name:
+        - 1password
         - anki
         - deepl
         - discord
         - firefox
         - foxitreader
-        - notion
-        - obsidian
-        - protonvpn
-        - zoom
+        - fork
         - google-chrome
         - google-drive
         - iterm2
-        - logi-options-plus
-
-  - name: apps for macos
-    homebrew_cask:
-      name:
-        - alt-tab
-        - amitv87-pip
-        - bartender
-        - font-sauce-code-pro-nerd-font
-        - kap
-        - karabiner-elements
-        - keycastr
-        - maccy
-        - openin
-        - rectangle
-        - raycast
-        - shottr
-        - the-unarchiver
-        - vlc
-
-  
-  - name: Reduce macos noise
-    osx_defaults:
-      key: "{{ item.key }}"
-      domain: "{{ item.domain }}"
-      value: "{{ item.value }}"
-    loop:
-      - domain: com.apple.dock
-        key: no-bouncing
-        value: TRUE
+        - notion
+        - obsidian
+        - protonvpn
+        - visual-studio-code
+        - zoom
