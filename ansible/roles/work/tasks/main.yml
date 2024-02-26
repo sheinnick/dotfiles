@@ -24,6 +24,8 @@
   - name: apps for work
     homebrew_cask:
       name:
+        - 1password
+        - 1password-cli
         - dbeaver-community
         - fork
         - google-chrome

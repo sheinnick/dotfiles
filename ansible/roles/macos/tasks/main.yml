@@ -6,8 +6,8 @@
   - name: apps for macos
     homebrew_cask:
       name:
-        - iterm2
         - alt-tab
+        - aldente
         - amitv87-pip
         - bartender
         - firefox
@@ -16,6 +16,7 @@
         - google-chrome
         - google-drive
         - ilya-birman-typography-layout
+        - iterm2
         - kap
         - karabiner-elements
         - keycastr
