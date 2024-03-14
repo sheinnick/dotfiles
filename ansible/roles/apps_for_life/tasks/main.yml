@@ -34,6 +34,12 @@
         - notion
         - obsidian
         - protonvpn
-        - tomatobar
         - visual-studio-code
         - zoom
+
+  - name: apps for life o-quarantine
+    homebrew_cask:
+      name:
+        - tomatobar
+      install_options:
+        - no-quarantine
