@@ -1,0 +1,34 @@
+- defaults:
+    link:
+      create: true
+    shell:
+      stderr: true
+
+- clean: ['~', '~/.oh-my-zsh/plugins/', '~/.oh-my-zsh/themes/']
+
+- link:
+    ~/.bashrc: 
+      force: true
+      path: .bashrc
+    ~/.zprofile:
+      force: true
+      path: .zprofile
+    ~/.zshrc:
+      force: true
+      path: .zshrc
+    ~/.aliases:
+      force: true
+      path: .aliases
+    ~/.oh-my-zsh/plugins/zsh-autosuggestions:
+      force: true
+      path: oh-my-zsh/custom/plugins/zsh-autosuggestions/
+    ~/.oh-my-zsh/plugins/zsh-syntax-highlighting:
+      force: true
+      path: oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
+    
+    # Git
+    ~/.gitignore: git/.gitignore
+    ~/.gitconfig: git/.gitconfig
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
