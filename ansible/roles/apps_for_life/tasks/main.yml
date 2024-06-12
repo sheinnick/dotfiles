@@ -12,6 +12,7 @@
         - ffmpeg
         - gh
         - git
+        - micro
         - mc
         - mtr
         - nmap
@@ -34,7 +35,10 @@
         - notion
         - obsidian
         - protonvpn
+        - sublime-text
+        - todoist
         - visual-studio-code
+        - vlc
         - zoom
 
   - name: apps for life o-quarantine
