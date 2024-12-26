@@ -25,6 +25,7 @@
         - rectangle
         - shottr
         - the-unarchiver
+        - keka
         - vlc
   
   - name: Reduce macos noise

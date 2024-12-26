@@ -1,5 +1,6 @@
 installed extensions
 Brew (https://raycast.com/nhojb/brew)
+Change Case (https://raycast.com/erics118/change-case)
 Change Scroll Direction (https://raycast.com/gregoralbrecht/change-scroll-direction)
 Clean Keyboard (https://raycast.com/ike-gg/clean-keyboard)
 DevUtils (https://raycast.com/devutils/devutils)
