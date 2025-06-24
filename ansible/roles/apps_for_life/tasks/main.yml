@@ -10,12 +10,15 @@
         - bat
         - dive
         - ffmpeg
+        - jq
         - gh
         - git
+        - gping
+        - micro
         - mc
         - mtr
         - nmap
-        - youtube-dl
+        - yt-dlp
         - zsh-syntax-highlighting
 
   - name: apps for life
@@ -26,7 +29,6 @@
         - deepl
         - discord
         - firefox
-        - foxitreader
         - fork
         - google-chrome
         - google-drive
@@ -34,7 +36,10 @@
         - notion
         - obsidian
         - protonvpn
+        - sublime-text
+        - todoist
         - visual-studio-code
+        - vlc
         - zoom
 
   - name: apps for life o-quarantine

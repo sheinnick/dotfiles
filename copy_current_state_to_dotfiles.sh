@@ -9,3 +9,7 @@ cp ~/.gitconfig ./git/.gitconfig
 cp ~/.gitignore ./git/.gitignore
 
 cp ~/.config/karabiner/karabiner.json ./karabiner.json
+
+cp $HOME/Library/Application\ Support/Code/User/keybindings.json ./vscode/keybindings.json
+cp $HOME/Library/Application\ Support/Code/User/settings.json ./vscode/settings.json
+cp ~/.flake8 ./.flake8  

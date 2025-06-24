@@ -9,7 +9,7 @@
         - alt-tab
         - aldente
         - amitv87-pip
-        - bartender
+        - jordanbaird-ice
         - firefox
         - font-jetbrains-mono
         - font-sauce-code-pro-nerd-font
@@ -25,6 +25,7 @@
         - rectangle
         - shottr
         - the-unarchiver
+        - keka
         - vlc
   
   - name: Reduce macos noise

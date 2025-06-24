@@ -1,0 +1,58 @@
+{
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "workbench.startupEditor": "none",
+    "[jsonc]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "workbench.editor.enablePreview": false,
+    "[sql]": {
+        "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode"
+    },
+    "Prettier-SQL.keywordCase": "lower",
+    "Prettier-SQL.SQLFlavourOverride": "bigquery",
+    "[javascript]": {
+        "editor.defaultFormatter": "HookyQR.beautify"
+    },
+    "Prettier-SQL.commaPosition": "before",
+    "Prettier-SQL.insertSpacesOverride": false,
+    "explorer.openEditors.minVisible": 3,
+    "editor.fontFamily": "'JetBrains Mono'",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 13,
+    "workbench.settings.applyToAllProfiles": [
+        "editor.fontSize",
+        "editor.fontLigatures",
+        "editor.fontFamily"
+    ],
+    "notebook.lineNumbers": "on",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "svg.preview.mode": "img",
+    "window.title": "${rootName}${separator}${profileName}${activeEditorShort}${separator}",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": false,
+        "markdown": false,
+        "scminput": false,
+        "xml": "false"
+    },
+    "jupyter.askForKernelRestart": false,
+    "security.promptForRemoteFileProtocolHandling": false,
+    "sqlfluff.dialect": "bigquery",
+    "Prettier-SQL.indentStyle": "tabularLeft",
+    "Prettier-SQL.linesBetweenQueries": 2,
+    "Prettier-SQL.tabSizeOverride": 1,
+    "Prettier-SQL.tabulateAlias": true,
+    "github.copilot.editor.enableAutoCompletions": true,
+    "dataform.recommendYamlExtension": false,
+    "git.openRepositoryInParentFolders": "always",
+    "editor.accessibilitySupport": "off",
+    "workbench.colorTheme": "Default Light Modern"
+}
