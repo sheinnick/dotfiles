@@ -71,3 +71,9 @@ DEFAULT_USER prompt_context(){}
 source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+DEFAULT_USER=""
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"

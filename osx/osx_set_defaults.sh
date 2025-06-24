@@ -42,6 +42,7 @@ chflags nohidden ~/Library
 
 # Avoid creating .DS_Store files on network volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
 # Display file extensions"
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
