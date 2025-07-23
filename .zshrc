@@ -10,6 +10,7 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 
 # Uncomment the following line to change how often to auto-update (in days).
 zstyle ':omz:update' frequency 2
+zstyle ':omz:plugins:git' verbose false
 
 HIST_STAMPS="yyyy-mm-dd"
 
@@ -25,13 +26,16 @@ plugins=(
 	aliases
 	brew
 	copyfile
+	docker-compose
 	dotenv
 	git
 	history
 	poetry
 	themes
+	z
 	zsh-autosuggestions 
 	zsh-syntax-highlighting
+	zsh-history-substring-search
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -42,6 +46,8 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -77,3 +83,6 @@ DEFAULT_USER=""
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
+eval "$(zoxide init zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

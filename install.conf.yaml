@@ -36,6 +36,9 @@
     ~/.oh-my-zsh/plugins/zsh-syntax-highlighting:
       force: true
       path: oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
+    ~/.oh-my-zsh/plugins/zsh-history-substring-search:
+      force: true
+      path: oh-my-zsh/custom/plugins/zsh-history-substring-search/
     
     # Git
     ~/.gitignore: git/.gitignore
