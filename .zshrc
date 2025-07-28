@@ -14,6 +14,9 @@ zstyle ':omz:plugins:git' verbose false
 
 HIST_STAMPS="yyyy-mm-dd"
 
+# Commands starting from " " (whitespace) won't be saved in history:
+HIST_IGNORE_SPACE='true'
+
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM="$HOME/.oh-my-zsh"
 
@@ -29,6 +32,7 @@ plugins=(
 	docker-compose
 	dotenv
 	git
+	gitfast
 	history
 	poetry
 	themes
@@ -49,12 +53,12 @@ source $ZSH/oh-my-zsh.sh
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='micro'
+else
+  export EDITOR='micro'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

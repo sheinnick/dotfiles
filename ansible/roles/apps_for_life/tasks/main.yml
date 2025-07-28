@@ -8,17 +8,21 @@
       name:
         - bash-completion
         - bat
+        - catimg
         - dive
         - ffmpeg
         - jq
         - gh
         - git
         - gping
+        - mas
         - micro
         - mc
         - mtr
         - nmap
+        - tree
         - yt-dlp
+        - zsh
         - zsh-syntax-highlighting
 
   - name: apps for life
@@ -29,11 +33,14 @@
         - deepl
         - discord
         - firefox
+        - flux-app
+        - font-consolas-for-powerline
+        - font-fira-code
         - fork
         - google-chrome
         - google-drive
         - iterm2
-        - notion
+        - obs
         - obsidian
         - protonvpn
         - sublime-text

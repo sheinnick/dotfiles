@@ -19,6 +19,7 @@
         - nmap
         - node
         - python3
+        - pyenv
         - zsh-syntax-highlighting
 
   - name: apps for work

@@ -3,6 +3,13 @@
     homebrew_tap:
       name: homebrew/cask-fonts
 
+  - name: Ensure console utils are installed
+    homebrew:
+      name:
+        - qlstephen
+        - qlmarkdown
+        - quicklook-json
+
   - name: apps for macos
     homebrew_cask:
       name:
@@ -20,6 +27,7 @@
         - kap
         - karabiner-elements
         - keycastr
+        - mas
         - maccy
         - raycast
         - rectangle

@@ -25,11 +25,17 @@ defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -int 0
 ###### finder
 ###########
 
+# finder warp speed
+defaults write com.apple.finder DisableAllAnimations -bool true
+
+# Keep folders on top when sorting by name:
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
 # Finder: allow text selection in Quick Look.
 defaults write com.apple.finder QLEnableTextSelection -bool true
 
 #Show hidden files
-defaults write com.apple.finder AppleShowAllFiles YES; killall Finder
+defaults write com.apple.finder AppleShowAllFiles -bool true; killall Finder
 
 # Always open everything in Finder's list view. This is important.
 defaults write com.apple.Finder FXPreferredViewStyle Nlsv
@@ -50,6 +56,9 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 # Allow quitting Finder via ⌘ + Q; doing so will also hide desktop icons
 defaults write com.apple.finder QuitMenuItem -bool true
 
+# When performing a search, search the current folder by default
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
 ########################
 ###### dock
 ###########
@@ -57,6 +66,7 @@ defaults write com.apple.finder QuitMenuItem -bool true
 # make dock faster
 defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -int 0
+defaults write com.apple.dock mineffect -string "scale"
 
 #autohide
 defaults write com.apple.dock autohide -bool true
@@ -88,6 +98,27 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 ########################
 ###### other
 ###########
+
+# top-left → Desktop + ⌘
+defaults write com.apple.dock wvous-tl-corner -int 4
+defaults write com.apple.dock wvous-tl-modifier -int 1048576
+
+# top-right → Mission Control + ⌘
+defaults write com.apple.dock wvous-tr-corner -int 2
+defaults write com.apple.dock wvous-tr-modifier -int 1048576
+
+# bottom-left → Launchpad + ⌘
+defaults write com.apple.dock wvous-bl-corner -int 11
+defaults write com.apple.dock wvous-bl-modifier -int 1048576
+
+# bottom-right → Application Windows + ⌘
+defaults write com.apple.dock wvous-br-corner -int 3
+defaults write com.apple.dock wvous-br-modifier -int 1048576
+
+killall Dock
+
+#hide weekday in menubar
+defaults write com.apple.menuextra.clock ShowDayOfWeek -bool false
 
 # show cmd+tab window on all displays
 defaults write http://com.apple.dock appswitcher-all-displays -bool true
