@@ -27,6 +27,9 @@
     ~/.zshrc:
       force: true
       path: .zshrc
+    ~/.skhdrc:
+      force: true
+      path: .skhdrc
     ~/.aliases:
       force: true
       path: .aliases

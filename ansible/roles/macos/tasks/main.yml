@@ -6,9 +6,14 @@
   - name: Ensure console utils are installed
     homebrew:
       name:
+        - koekeishiya/formulae/skhd
         - qlstephen
         - qlmarkdown
         - quicklook-json
+
+  - name: Start skhd service
+    shell: skhd --start-service
+    become: false
 
   - name: apps for macos
     homebrew_cask:

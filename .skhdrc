@@ -1,0 +1,17 @@
+# Custom keyboard shortcuts to spawn apps
+#
+# Docs can be found here:
+# https://github.com/koekeishiya/skhd
+
+# open vscode:
+ctrl - p : open -a 'Cursor'
+
+# open browser:
+ctrl - o : open -a 'Firefox'
+
+# open telegram:
+ctrl - t : open -a 'Telegram Desktop'
+
+
+
+# Restart skhd service `skhd --restart-service`
