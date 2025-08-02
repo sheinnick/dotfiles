@@ -1,58 +1,245 @@
 {
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false,
-    "git.autofetch": true,
-    "git.confirmSync": false,
-    "[json]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    },
-    "workbench.startupEditor": "none",
-    "[jsonc]": {
-        "editor.defaultFormatter": "HookyQR.beautify"
-    },
-    "workbench.editor.enablePreview": false,
-    "[sql]": {
-        "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode"
-    },
-    "Prettier-SQL.keywordCase": "lower",
-    "Prettier-SQL.SQLFlavourOverride": "bigquery",
-    "[javascript]": {
-        "editor.defaultFormatter": "HookyQR.beautify"
-    },
-    "Prettier-SQL.commaPosition": "before",
-    "Prettier-SQL.insertSpacesOverride": false,
-    "explorer.openEditors.minVisible": 3,
-    "editor.fontFamily": "'JetBrains Mono'",
+    "editor.glyphMargin": false,
+    "editor.cursorBlinking": "solid",
+    "editor.accessibilitySupport": "off",
+    "editor.codeLens": true,
+    "editor.colorDecorators": false,
+    "editor.dragAndDrop": false,
+    "editor.folding": false,
+    "editor.showFoldingControls": "mouseover",
+    //   "editor.fontFamily": "Cascadia Code" ,
+    "editor.fontFamily": "Fira Code",
+    //   "editor.fontFamily": "JetBrains Mono",
     "editor.fontLigatures": true,
     "editor.fontSize": 13,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "selection",
+    //   "editor.renderLineHighlight": "none",
+    "editor.hideCursorInOverviewRuler": false,
+    "editor.occurrencesHighlight": "off",
+    "editor.overviewRulerBorder": false,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.rulers": [
+        120
+    ],
+    "editor.wordWrapColumn": 120,
+    "editor.wordWrap": "on",
+    "editor.scrollBeyondLastLine": true,
+    "editor.cursorSurroundingLines": 10,
+    "editor.useTabStops": true,
+    "editor.formatOnPaste": false,
+    "editor.hover.enabled": true,
+    //   "editor.stickyScroll.enabled": false,
+    "editor.scrollbar.vertical": "visible",
+    "editor.scrollbar.horizontal": "hidden",
+
+    "editor.gotoLocation.multipleReferences": "goto",
+    "editor.gotoLocation.multipleDefinitions": "goto",
+    "editor.gotoLocation.multipleDeclarations": "goto",
+    "editor.gotoLocation.multipleImplementations": "goto",
+    "editor.gotoLocation.multipleTypeDefinitions": "goto",
+
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingQuotes": "never",
+    "editor.autoSurround": "never",
+    "editor.autoClosingOvertype": "never",
+
+    "editor.snippetSuggestions": "none",
+    "editor.suggestOnTriggerCharacters": false,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.acceptSuggestionOnEnter": "on",
+    "editor.suggestSelection": "recentlyUsed",
+    "editor.parameterHints.enabled": false,
+
+    "editor.tabCompletion": "on",
+    "editor.quickSuggestions": {
+        "other": false,
+        "comments": false,
+        "strings": false
+    },
+    "editor.formatOnType": false,
+    "editor.inlineSuggest.enabled": false,
+    "editor.suggest.localityBonus": true,
+    "editor.lightbulb.enabled": "off",
+    "editor.detectIndentation": false,
+    "editor.guides.indentation": false,
+    "editor.showUnused": true,
+    "editor.pasteAs.preferences": [
+        "text.plain"
+    ],
+    "editor.unicodeHighlight.nonBasicASCII": true,
+
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.openEditors.minVisible": 3,
+
+    "search.quickAccess.preserveInput": true,
+    "search.quickOpen.includeSymbols": false,
+    "search.quickOpen.history.filterSortOrder": "recency",
+    
+    
+    "[css]": {
+        "editor.colorDecorators": true
+    },
+    "[jsonc]": {
+        "editor.colorDecorators": true
+    },
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+    
+    "files.associations": {
+        ".babelrc": "jsonc",
+        ".eslintrc": "jsonc",
+        ".jsonl": "jsonc",
+        "*.pyi": "python",
+        "*.bats": "shellscript"
+    },
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "workbench.quickOpen.preserveInput": false,
+
+    "files.autoSave": "onFocusChange",
+    "files.exclude": {
+        "**/.DS_Store": true,
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/__pycache__": true,
+        "**/.cache": true,
+        "**/.idea": true,
+        "**/.pytest_cache": true,
+        "**/.mypy_cache": true,
+        "**/.venv": true,
+        "**/.coverage": true,
+        "**/*.py[co]": true,
+        "**/htmlcoverage": true,
+        "**/docs/build": true
+    },
+
+    "terminal.integrated.defaultLocation": "view",
+    "terminal.integrated.enableMultiLinePasteWarning": "never",
+    "accessibility.signals.terminalBell": {
+        "sound": "off",
+        "announcement": "off",
+    },
+    "terminal.integrated.enableVisualBell": true,
+    "terminal.integrated.fontLigatures.enabled": false,
+    "terminal.integrated.sendKeybindingsToShell": true,
+    
+    "git.autorefresh": true,
+    "git.autofetch": false,
+    "git.confirmSync": false,
+    "git.showInlineOpenFileAction": false,
+    "git.decorations.enabled": true,
+    "git.openRepositoryInParentFolders": "always",
+    //   "git.blame.editorDecoration.enabled": false,
+    "merge-conflict.autoNavigateNextConflict.enabled": false,
+
+    "python.analysis.completeFunctionParens": false,
+    "python.createEnvironment.trigger": "off",
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.terminal.activateEnvironment": true,
+    "python.analysis.reportExtraTelemetry": false,
+
+    "security.promptForRemoteFileProtocolHandling": false,
+
+    "window.title": "${rootName}${separator}${profileName}${activeEditorShort}${separator}",
     "workbench.settings.applyToAllProfiles": [
         "editor.fontSize",
         "editor.fontLigatures",
         "editor.fontFamily"
     ],
-    "notebook.lineNumbers": "on",
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
-    },
-    "svg.preview.mode": "img",
-    "window.title": "${rootName}${separator}${profileName}${activeEditorShort}${separator}",
-    "github.copilot.enable": {
-        "*": false,
-        "plaintext": false,
-        "markdown": false,
-        "scminput": false,
-        "xml": "false"
-    },
+    "workbench.activityBar.orientation": "vertical",
+
+    "window.clickThroughInactive": false,
+    "window.newWindowDimensions": "maximized",
+    "workbench.editor.labelFormat": "medium",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.tips.enabled": false,
+    "workbench.tree.renderIndentGuides": "always",
+    "workbench.tree.enableStickyScroll": false,
+    "workbench.editor.highlightModifiedTabs": false,
+    //   "workbench.editor.showIcons": false,
+    "workbench.editor.showTabs": "multiple",
+    "workbench.editor.decorations.badges": false,
+    "workbench.editor.decorations.colors": false,
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.empty.hint": "hidden",
+
+    // "workbench.colorTheme": "pustota",
+    // "workbench.iconTheme": "ayu",
+
+    "window.titleBarStyle": "custom",
+    "window.customTitleBarVisibility": "never",
+
+
     "jupyter.askForKernelRestart": false,
-    "security.promptForRemoteFileProtocolHandling": false,
-    "sqlfluff.dialect": "bigquery",
-    "Prettier-SQL.indentStyle": "tabularLeft",
-    "Prettier-SQL.linesBetweenQueries": 2,
-    "Prettier-SQL.tabSizeOverride": 1,
-    "Prettier-SQL.tabulateAlias": true,
-    "github.copilot.editor.enableAutoCompletions": true,
-    "dataform.recommendYamlExtension": false,
-    "git.openRepositoryInParentFolders": "always",
-    "editor.accessibilitySupport": "off",
-    "workbench.colorTheme": "Default Light Modern"
+    "notebook.lineNumbers": "on",
+    "svg.preview.mode": "img",
+    "workbench.sideBar.location": "right",
+
+    
+    "workbench.editor.centeredLayoutAutoResize": true,
+
+    // peacock https://open-vsx.org/extension/johnpapa/vscode-peacock
+    "peacock.favoriteColors": [
+        {
+            "name": "Deep Violet Blue",
+            "value": "#1E1E2E"
+        },
+        {
+            "name": "Dark Teal",
+            "value": "#004643"
+        },
+        {
+            "name": "Wine Purple",
+            "value": "#5F0F40"
+        },
+        {
+            "name": "Muted Indigo",
+            "value": "#2E4057"
+        },
+        {
+            "name": "Olive Shadow",
+            "value": "#374C26"
+        },
+        {
+            "name": "Twilight Plum",
+            "value": "#3E1F47"
+        },
+        {
+            "name": "Ash Olive",
+            "value": "#3B3C36"
+        },
+        {
+            "name": "Eggplant Smoke",
+            "value": "#4B1D3F"
+        },
+        {
+            "name": "Digital Navy",
+            "value": "#123456"
+        },
+        {
+            "name": "Dusky Sea",
+            "value": "#29434E"
+        }
+    ],
+    "peacock.affectActivityBar": false,
+    "peacock.affectSashHover": false,
+    "peacock.surpriseMeFromFavoritesOnly": true,
+    "workbench.colorTheme": "Visual Studio Dark",
+
+    // "dataform.recommendYamlExtension": false,
+
+    // "Prettier-SQL.commaPosition": "before",
+    // "Prettier-SQL.indentStyle": "tabularLeft",
+    // "Prettier-SQL.insertSpacesOverride": false,
+    // "Prettier-SQL.keywordCase": "lower",
+    // "Prettier-SQL.linesBetweenQueries": 2,
+    // "Prettier-SQL.SQLFlavourOverride": "bigquery",
+    // "Prettier-SQL.tabSizeOverride": 1,
+    // "Prettier-SQL.tabulateAlias": true
+
 }
+

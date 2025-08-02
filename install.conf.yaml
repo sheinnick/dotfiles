@@ -53,18 +53,19 @@
     
     # vscode
     # vscode keybindings
-    $HOME/Library/Application\ Support/Code/User/keybindings.json:
+    ~/Library/Application\ Support/Code/User/keybindings.json:
       force: true
       path: vscode/keybindings.json
     
-    # vscode settings
-    $HOME/Library/Application\ Support/Code/User/settings.json:
+    # vscode settings:
+    ~/Library/Application\ Support/Code/User/settings.json:
       force: true
       path: vscode/settings.json
-    
-    ~/.flake8:
+
+    # cursor settings:
+    ~/Library/Application\ Support/Cursor/User/settings.json:
       force: true
-      path: .flake8
+      path: vscode/settings.json
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
