@@ -1,8 +1,4 @@
 ---
-  - name: Add required homebrew repos
-    homebrew_tap:
-      name: homebrew/cask-fonts
-
   - name: Ensure console utils are installed
     homebrew:
       name:
@@ -12,7 +8,6 @@
         - dive
         - ffmpeg
         - jq
-        - gh
         - git
         - gping
         - mas
@@ -30,13 +25,13 @@
       name:
         - 1password
         - anki
+        - chatgpt
         - deepl
         - discord
         - firefox
         - flux-app
-        - font-consolas-for-powerline
-        - font-fira-code
         - fork
+        - gimp
         - google-chrome
         - google-drive
         - iterm2
@@ -45,8 +40,8 @@
         - protonvpn
         - sublime-text
         - todoist
-        - visual-studio-code
         - vlc
+        - whatsapp
         - zoom
 
   - name: apps for life o-quarantine

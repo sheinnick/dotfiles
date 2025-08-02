@@ -3,10 +3,25 @@
     homebrew_tap:
       name: homebrew/cask-fonts
 
+  - name: fonts
+    homebrew_cask:
+      name:
+        - font-cascadia-code
+        - font-consolas-for-powerline
+        - font-fira-code
+        - font-jetbrains-mono
+        - font-martian-mono
+        - font-roboto-mono
+        - font-sauce-code-pro-nerd-font
+
   - name: Ensure console utils are installed
     homebrew:
       name:
         - koekeishiya/formulae/skhd
+  
+  - name: quick preview plugins
+    homebrew:
+      name:
         - qlstephen
         - qlmarkdown
         - quicklook-json
@@ -23,15 +38,12 @@
         - amitv87-pip
         - jordanbaird-ice
         - firefox
-        - font-jetbrains-mono
-        - font-sauce-code-pro-nerd-font
         - google-chrome
-        - google-drive
         - ilya-birman-typography-layout
         - iterm2
         - kap
         - karabiner-elements
-        - keycastr
+        - losslesscut
         - mas
         - maccy
         - raycast

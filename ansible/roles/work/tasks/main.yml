@@ -1,8 +1,4 @@
 ---
-  - name: Add required homebrew repos
-    homebrew_tap:
-      name: homebrew/cask-fonts
-
   - name: Ensure console utils are installed
     homebrew:
       name:
@@ -10,7 +6,6 @@
         - bash-completion
         - bat
         - dive
-        - gh
         - git
         - httpie
         - jq
@@ -27,6 +22,7 @@
       name:
         - 1password
         - 1password-cli
+        - cursor
         - dbeaver-community
         - fork
         - google-chrome

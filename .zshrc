@@ -27,6 +27,7 @@ ZSH_CUSTOM="$HOME/.oh-my-zsh"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	aliases
+	autoenv
 	brew
 	copyfile
 	docker-compose
@@ -53,7 +54,7 @@ source $ZSH/oh-my-zsh.sh
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-Preferred editor for local and remote sessions
+#Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='micro'
 else

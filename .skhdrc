@@ -12,6 +12,12 @@ ctrl - o : open -a 'Firefox'
 # open telegram:
 ctrl - t : open -a 'Telegram Desktop'
 
+# open Chrome:
+ctrl - y : open -a "Google Chrome" --args --profile-directory="Default"
 
+.blacklist [
+    "iTerm"
+    "terminal"
+]
 
 # Restart skhd service `skhd --restart-service`

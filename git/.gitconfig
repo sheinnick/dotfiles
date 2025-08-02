@@ -1,6 +1,7 @@
 [user]
 	name = Nikita Shein
 	signingkey = ~/.ssh/id_ed25519.pub
+	email = shein.nikita@gmail.com
 [core]
 	editor = micro -w
 	excludesFile = ~/.gitignore
