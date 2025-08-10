@@ -20,52 +20,52 @@
 - link:
     ~/.bashrc: 
       force: true
-      path: .bashrc
+      path: configs/.bashrc
     ~/.zprofile:
       force: true
-      path: .zprofile
+      path: configs/.zprofile
     ~/.zshrc:
       force: true
-      path: .zshrc
+      path: configs/.zshrc
     ~/.skhdrc:
       force: true
-      path: .skhdrc
+      path: configs/.skhdrc
     ~/.aliases:
       force: true
-      path: .aliases
+      path: configs/.aliases
     ~/.oh-my-zsh/plugins/zsh-autosuggestions:
       force: true
-      path: oh-my-zsh/custom/plugins/zsh-autosuggestions/
+      path: configs/oh-my-zsh/custom/plugins/zsh-autosuggestions/
     ~/.oh-my-zsh/plugins/zsh-syntax-highlighting:
       force: true
-      path: oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
+      path: configs/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/
     ~/.oh-my-zsh/plugins/zsh-history-substring-search:
       force: true
-      path: oh-my-zsh/custom/plugins/zsh-history-substring-search/
+      path: configs/oh-my-zsh/custom/plugins/zsh-history-substring-search/
     
     # Git
-    ~/.gitignore: git/.gitignore
-    ~/.gitconfig: git/.gitconfig
+    ~/.gitignore: configs/git/.gitignore
+    ~/.gitconfig: configs/git/.gitconfig
 
     ~/.config/karabiner/karabiner.json:
       force: true
-      path: ./karabiner.json
+      path: configs/./karabiner.json
     
     # vscode
     # vscode keybindings
     ~/Library/Application\ Support/Code/User/keybindings.json:
       force: true
-      path: vscode/keybindings.json
+      path: configs/vscode/keybindings.json
     
     # vscode settings:
     ~/Library/Application\ Support/Code/User/settings.json:
       force: true
-      path: vscode/settings.json
+      path: configs/vscode/settings.json
 
     # cursor settings:
     ~/Library/Application\ Support/Cursor/User/settings.json:
       force: true
-      path: vscode/settings.json
+      path: configs/vscode/settings.json
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
