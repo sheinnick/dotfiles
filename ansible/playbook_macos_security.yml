@@ -1,0 +1,7 @@
+---
+- name: MacOS security hardening only
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  roles:
+    - macos_security

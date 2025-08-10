@@ -1,0 +1,151 @@
+---
+- name: Tap additional Homebrew repositories (if any)
+  community.general.homebrew_tap:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ macos_apps_homebrew_taps }}"
+  when: macos_apps_homebrew_taps | length > 0
+  tags: [homebrew, tap]
+
+- name: Initialize failure collections
+  ansible.builtin.set_fact:
+    macos_apps_failed_brew: []
+    macos_apps_failed_cask: []
+
+- name: Install fonts
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: present
+    install_options: "{{ macos_apps_install_options }}"
+  loop: "{{ macos_apps_fonts | default([]) }}"
+  register: macos_apps_fonts_cask_results
+  failed_when: false
+  loop_control:
+    label: "{{ item }}"
+  tags: [homebrew, cask, fonts]
+
+- name: Collect failed font casks
+  ansible.builtin.set_fact:
+    macos_apps_failed_cask: >
+      {{ macos_apps_failed_cask + (macos_apps_fonts_cask_results.results | default([])
+      | selectattr('failed', 'defined') | selectattr('failed') | map(attribute='item') | list) }}
+  when: fonts_cask_results is defined
+
+- name: Install macos_useful_cli_apps
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ macos_apps_useful_cli_apps | default([]) }}"
+  register: macos_apps_useful_cli_results
+  failed_when: false
+  loop_control:
+    label: "{{ item }}"
+  tags: [homebrew, cli, useful]
+
+- name: Collect failed useful CLI formulas
+  ansible.builtin.set_fact:
+    macos_apps_failed_brew: >
+      {{ macos_apps_failed_brew + (macos_apps_useful_cli_results.results | default([])
+      | selectattr('failed', 'defined') | selectattr('failed') | map(attribute='item') | list) }}
+  when: useful_cli_results is defined
+
+- name: Install macos_useful_cask_apps
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: present
+    install_options: "{{ macos_apps_install_options }}"
+  loop: "{{ macos_apps_useful_cask_apps | default([]) }}"
+  register: macos_apps_useful_cask_results
+  failed_when: false
+  loop_control:
+    label: "{{ item }}"
+  tags: [homebrew, cask, useful]
+
+- name: Collect failed useful cask apps
+  ansible.builtin.set_fact:
+    macos_apps_failed_cask: >
+      {{ macos_apps_failed_cask + (macos_apps_useful_cask_results.results | default([])
+      | selectattr('failed', 'defined') | selectattr('failed') | map(attribute='item') | list) }}
+  when: useful_cask_results is defined
+
+- name: Install macos_my_cli_apps
+  community.general.homebrew:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ macos_apps_my_cli_apps | default([]) }}"
+  register: macos_apps_my_cli_results
+  failed_when: false
+  loop_control:
+    label: "{{ item }}"
+  tags: [homebrew, cli, my]
+
+- name: Collect failed my CLI formulas
+  ansible.builtin.set_fact:
+    macos_apps_failed_brew: >
+      {{ macos_apps_failed_brew + (macos_apps_my_cli_results.results | default([])
+      | selectattr('failed', 'defined') | selectattr('failed') | map(attribute='item') | list) }}
+  when: my_cli_results is defined
+
+- name: Install macos_my_cask_apps
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: present
+    install_options: "{{ macos_apps_install_options }}"
+  loop: "{{ macos_apps_my_cask_apps | default([]) }}"
+  register: macos_apps_my_cask_results
+  failed_when: false
+  loop_control:
+    label: "{{ item }}"
+  tags: [homebrew, cask, my]
+
+- name: Collect failed my cask apps
+  ansible.builtin.set_fact:
+    macos_apps_failed_cask: >
+      {{ macos_apps_failed_cask + (macos_apps_my_cask_results.results | default([])
+      | selectattr('failed', 'defined') | selectattr('failed') | map(attribute='item') | list) }}
+  when: my_cask_results is defined
+
+- name: Install macos_apps_for_work
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: present
+    install_options: "{{ macos_apps_install_options }}"
+  loop: "{{ macos_apps_apps_for_work | default([]) }}"
+  register: macos_apps_work_cask_results
+  failed_when: false
+  loop_control:
+    label: "{{ item }}"
+  tags: [homebrew, cask, work]
+
+- name: Collect failed work cask apps
+  ansible.builtin.set_fact:
+    macos_apps_failed_cask: >
+      {{ macos_apps_failed_cask + (macos_apps_work_cask_results.results | default([])
+      | selectattr('failed', 'defined') | selectattr('failed') | map(attribute='item') | list) }}
+  when: work_cask_results is defined
+
+- name: Ensure skhd is enabled and running
+  community.general.launchd:
+    name: com.koekeishiya.skhd
+    enabled: true
+    state: restarted
+  tags: [my, skhd]
+
+- name: Reduce macos noise
+  community.general.osx_defaults:
+    key: "{{ item.key }}"
+    domain: "{{ item.domain }}"
+    value: "{{ item.value }}"
+  loop:
+    - domain: com.apple.dock
+      key: no-bouncing
+      value: true
+  tags: [macos]
+
+- name: Fail at end if any installs failed
+  ansible.builtin.fail:
+    msg: >-
+      Homebrew installs failed.
+      Brew formulas: {{ macos_apps_failed_brew | unique | join(', ') if (macos_apps_failed_brew | length) > 0 else 'none' }};
+      Casks: {{ macos_apps_failed_cask | unique | join(', ') if (macos_apps_failed_cask | length) > 0 else 'none' }}.
+  when: (macos_apps_failed_brew | length) + (macos_apps_failed_cask | length) > 0

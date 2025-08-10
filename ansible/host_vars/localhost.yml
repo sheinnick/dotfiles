@@ -1,0 +1,11 @@
+---
+# Default localhost profile: personal
+
+# # Select quicklook install method ('cask' or 'brew')
+# apps_for_life_quicklook_install_via: cask
+
+# # Personal defaults can extend/override as needed
+# # Example exclusions
+# apps_for_life_exclude_cask_apps_common:
+#   - google-cloud-sdk
+

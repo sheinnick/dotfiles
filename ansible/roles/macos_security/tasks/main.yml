@@ -1,0 +1,343 @@
+---
+# macOS security hardening tasks
+
+- name: Check sudo availability
+  ansible.builtin.command: /usr/bin/true
+  register: macos_security_sudo_probe
+  changed_when: false
+  failed_when: false
+  become: true
+  check_mode: false
+  tags: [macos_security]
+
+- name: Set sudo availability fact
+  ansible.builtin.set_fact:
+    macos_security_sudo_available: "{{ macos_security_sudo_probe.rc == 0 }}"
+  tags: [macos_security]
+
+- name: Check Gatekeeper (spctl) status
+  ansible.builtin.command: spctl --status
+  register: macos_security_spctl_status
+  changed_when: false
+  failed_when: false
+  become: false
+  check_mode: false
+  tags: [macos_security, gatekeeper]
+
+- name: Enable Gatekeeper if disabled
+  ansible.builtin.command: spctl --master-enable
+  when:
+    - macos_security_sudo_available | default(false)
+    - (macos_security_spctl_status.stdout | default('') ~ macos_security_spctl_status.stderr | default('')) is not search("enabled")
+  become: true
+  changed_when: true
+  tags: [macos_security, gatekeeper]
+
+- name: Check Application Firewall global state
+  ansible.builtin.command: /usr/libexec/ApplicationFirewall/socketfilterfw --getglobalstate
+  register: macos_security_fw_state
+  changed_when: false
+  failed_when: false
+  become: true
+  check_mode: false
+  when: macos_security_sudo_available | default(false)
+  tags: [macos_security, firewall]
+
+- name: Enable Application Firewall
+  ansible.builtin.command: /usr/libexec/ApplicationFirewall/socketfilterfw --setglobalstate on
+  when:
+    - macos_security_sudo_available | default(false)
+    - (macos_security_fw_state.stdout | default('') ~ macos_security_fw_state.stderr | default('')) is not search("1")
+  become: true
+  changed_when: true
+  tags: [macos_security, firewall]
+
+- name: Check Firewall stealth mode
+  ansible.builtin.command: /usr/libexec/ApplicationFirewall/socketfilterfw --getstealthmode
+  register: macos_security_fw_stealth
+  changed_when: false
+  failed_when: false
+  become: true
+  check_mode: false
+  when: macos_security_sudo_available | default(false)
+  tags: [macos_security, firewall]
+
+- name: Enable Firewall stealth mode
+  ansible.builtin.command: /usr/libexec/ApplicationFirewall/socketfilterfw --setstealthmode on
+  when:
+    - macos_security_sudo_available | default(false)
+    - (macos_security_fw_stealth.stdout | default('') ~ macos_security_fw_stealth.stderr | default('')) is not search("1")
+  become: true
+  changed_when: true
+  tags: [macos_security, firewall]
+
+- name: Remove common inbound firewall allowances (idempotent-ish)
+  ansible.builtin.command: /usr/libexec/ApplicationFirewall/socketfilterfw --remove {{ item }}
+  loop:
+    - /usr/sbin/smbd
+    - /usr/libexec/sharingd
+    - /usr/libexec/sshd-keygen-wrapper
+    - /usr/sbin/cupsd
+  register: macos_security_remove_fw_allowance
+  changed_when: macos_security_remove_fw_allowance.rc == 0
+  failed_when: false
+  loop_control:
+    label: "{{ item }}"
+  become: true
+  when: macos_security_sudo_available | default(false)
+  tags: [macos_security, firewall]
+
+- name: Check SSH (Remote Login) state
+  ansible.builtin.command: systemsetup -getremotelogin
+  register: macos_security_ssh_state
+  changed_when: false
+  failed_when: false
+  become: true
+  check_mode: false
+  when: macos_security_sudo_available | default(false)
+  tags: [macos_security, ssh]
+
+- name: Disable SSH (Remote Login)
+  ansible.builtin.command: systemsetup -f -setremotelogin off
+  when:
+    - macos_security_sudo_available | default(false)
+    - (macos_security_ssh_state.stdout | default('') ~ macos_security_ssh_state.stderr | default('')) is not search("off", ignorecase=True)
+  become: true
+  changed_when: true
+  tags: [macos_security, ssh]
+
+- name: Disable SMB daemon
+  ansible.builtin.command: launchctl disable system/com.apple.smbd
+  changed_when: false
+  failed_when: false
+  become: true
+  when: macos_security_sudo_available | default(false)
+  tags: [macos_security, smb]
+
+- name: Disable SMB guest access
+  community.general.osx_defaults:
+    domain: /Library/Preferences/SystemConfiguration/com.apple.smb.server
+    key: AllowGuestAccess
+    value: false
+    type: bool
+  become: true
+  when: macos_security_sudo_available | default(false)
+  tags: [macos_security, smb]
+
+- name: Disable AFP guest access
+  community.general.osx_defaults:
+    domain: /Library/Preferences/com.apple.AppleFileServer
+    key: guestAccess
+    value: false
+    type: bool
+  become: true
+  when: macos_security_sudo_available | default(false)
+  tags: [macos_security, afp]
+
+- name: Get configured file shares
+  ansible.builtin.shell: |
+    set -o pipefail
+    sharing -l | awk -F': *' '/^name:/{print $2}'
+  register: macos_security_share_names
+  changed_when: false
+  failed_when: false
+  become: true
+  check_mode: false
+  when: macos_security_sudo_available | default(false)
+  args:
+    executable: /bin/bash
+  tags: [macos_security, sharing]
+
+- name: Remove configured file shares
+  ansible.builtin.command: sharing -r {{ item }}
+  loop: "{{ macos_security_share_names.stdout_lines | default([]) }}"
+  when:
+    - macos_security_sudo_available | default(false)
+    - macos_security_share_names.stdout is defined and macos_security_share_names.stdout|length > 0
+  register: macos_security_removed_share
+  changed_when: macos_security_removed_share.rc == 0
+  failed_when: false
+  loop_control:
+    label: "{{ item }}"
+  become: true
+  tags: [macos_security, sharing]
+
+- name: Check autologin presence
+  ansible.builtin.command: defaults read /Library/Preferences/com.apple.loginwindow autoLoginUser
+  register: macos_security_autologin_val
+  failed_when: false
+  changed_when: false
+  become: true
+  check_mode: false
+  when: macos_security_sudo_available | default(false)
+  tags: [macos_security, login]
+
+- name: Disable autologin if present
+  ansible.builtin.command: defaults delete /Library/Preferences/com.apple.loginwindow autoLoginUser
+  when:
+    - macos_security_sudo_available | default(false)
+    - macos_security_autologin_val.rc == 0
+  become: true
+  changed_when: true
+  tags: [macos_security, login]
+
+- name: Check auto-update schedule
+  ansible.builtin.command: softwareupdate --schedule
+  register: macos_security_upd_state
+  changed_when: false
+  failed_when: false
+  become: false
+  check_mode: false
+  tags: [macos_security, updates]
+
+- name: Enable auto-update schedule
+  ansible.builtin.command: softwareupdate --schedule on
+  when:
+    - macos_security_sudo_available | default(false)
+    - ((macos_security_upd_state.stdout | default('') ~ macos_security_upd_state.stderr | default('')) | trim) is not search("on", ignorecase=True)
+  become: true
+  changed_when: true
+  tags: [macos_security, updates]
+
+- name: Enable automatic OS update checks (system)
+  community.general.osx_defaults:
+    domain: /Library/Preferences/com.apple.SoftwareUpdate
+    key: AutomaticCheckEnabled
+    value: true
+    type: bool
+  become: true
+  when: macos_security_sudo_available | default(false)
+  tags: [macos_security, updates]
+
+- name: Enable automatic OS update downloads (system)
+  community.general.osx_defaults:
+    domain: /Library/Preferences/com.apple.SoftwareUpdate
+    key: AutomaticDownload
+    value: true
+    type: bool
+  become: true
+  when: macos_security_sudo_available | default(false)
+  tags: [macos_security, updates]
+
+- name: Enable automatic installation of critical updates (system)
+  community.general.osx_defaults:
+    domain: /Library/Preferences/com.apple.SoftwareUpdate
+    key: CriticalUpdateInstall
+    value: true
+    type: bool
+  become: true
+  when: macos_security_sudo_available | default(false)
+  tags: [macos_security, updates]
+
+- name: Enable automatic macOS updates (system)
+  community.general.osx_defaults:
+    domain: /Library/Preferences/com.apple.SoftwareUpdate
+    key: AutomaticallyInstallMacOSUpdates
+    value: true
+    type: bool
+  become: true
+  when: macos_security_sudo_available | default(false)
+  tags: [macos_security, updates]
+
+- name: Enable automatic App Store app updates (system)
+  community.general.osx_defaults:
+    domain: /Library/Preferences/com.apple.commerce
+    key: AutoUpdate
+    value: true
+    type: bool
+  become: true
+  when: macos_security_sudo_available | default(false)
+  tags: [macos_security, updates]
+
+- name: Check for software updates daily (per-user)
+  community.general.osx_defaults:
+    domain: com.apple.SoftwareUpdate
+    key: ScheduleFrequency
+    value: 1
+    type: int
+  become: false
+  tags: [macos_security, updates]
+
+- name: Disable diagnostics sharing AutoSubmit (per-user)
+  community.general.osx_defaults:
+    domain: com.apple.SubmitDiagInfo
+    key: AutoSubmit
+    value: false
+    type: bool
+  become: false
+  tags: [macos_security, privacy]
+
+- name: Disable diagnostics sharing ThirdPartyDataSubmit (per-user)
+  community.general.osx_defaults:
+    domain: com.apple.SubmitDiagInfo
+    key: ThirdPartyDataSubmit
+    value: false
+    type: bool
+  become: false
+  tags: [macos_security, privacy]
+
+- name: Disable ad personalization (per-user)
+  community.general.osx_defaults:
+    domain: com.apple.AdLib
+    key: allowApplePersonalizedAdvertising
+    value: false
+    type: bool
+  become: false
+  tags: [macos_security, privacy]
+
+- name: Disable advertising identifier usage (per-user)
+  community.general.osx_defaults:
+    domain: com.apple.AdLib
+    key: allowIdentifierForAdvertising
+    value: false
+    type: bool
+  become: false
+  tags: [macos_security, privacy]
+
+- name: Require password immediately after sleep or screen saver (per-user)
+  community.general.osx_defaults:
+    domain: com.apple.screensaver
+    key: askForPassword
+    value: 1
+    type: int
+  become: false
+  tags: [macos_security, screensaver]
+
+- name: Set password delay to 0 for screensaver (per-user)
+  community.general.osx_defaults:
+    domain: com.apple.screensaver
+    key: askForPasswordDelay
+    value: 0
+    type: int
+  become: false
+  tags: [macos_security, screensaver]
+
+- name: Report FileVault status
+  ansible.builtin.command: fdesetup status
+  register: macos_security_fv_status
+  changed_when: false
+  failed_when: false
+  become: false
+  check_mode: false
+  tags: [macos_security, filevault]
+
+- name: Advise to enable FileVault if off
+  ansible.builtin.debug:
+    msg: "FileVault is OFF → enable via System Settings or run 'sudo fdesetup enable'"
+  when: (macos_security_fv_status.stdout | default('') ~ macos_security_fv_status.stderr | default('')) is not search("FileVault is On")
+  tags: [macos_security, filevault]
+
+- name: Report SIP status
+  ansible.builtin.command: csrutil status
+  register: macos_security_sip_status
+  changed_when: false
+  failed_when: false
+  become: false
+  check_mode: false
+  tags: [macos_security, sip]
+
+- name: Advise to enable SIP if disabled
+  ansible.builtin.debug:
+    msg: "SIP is disabled → reboot to Recovery and run 'csrutil enable'"
+  when: (macos_security_sip_status.stdout | default('') ~ macos_security_sip_status.stderr | default('')) is not search("enabled")
+  tags: [macos_security, sip]

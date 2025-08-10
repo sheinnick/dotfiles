@@ -1,7 +1,0 @@
----
-  - name: My machine
-    hosts: all
-    roles:
-      - apps_for_life
-      - macos
-      - work

@@ -1,0 +1,108 @@
+---
+macos_apps_install_options:
+  - appdir=/Applications
+
+
+macos_apps_homebrew_taps:
+  - koekeishiya/formulae
+
+
+macos_apps_fonts:
+  - font-cascadia-code
+  - font-consolas-for-powerline
+  - font-fira-code
+  - font-jetbrains-mono
+  - font-martian-mono
+  - font-roboto-mono
+  - font-sauce-code-pro-nerd-font
+
+
+macos_apps_useful_cli_apps:
+  - ffmpeg
+  - gping
+  - mc
+  - micro
+  - python3
+
+
+macos_apps_useful_cask_apps:
+  - amitv87-pip
+  - alt-tab
+  - aldente
+  - chatgpt
+  - deepl
+  - firefox
+  - flux
+  - google-chrome
+  - ilya-birman-typography-layout
+  - iterm2
+  - jordanbaird-ice
+  - kap
+  - karabiner-elements
+  - keka
+  - maccy
+  - raycast
+  - rectangle
+  - shottr
+  - the-unarchiver
+  - vlc
+  - zsh
+  - qlstephen
+  - qlmarkdown
+  - quicklook-json
+
+
+macos_apps_my_cli_apps:
+  - 1password-cli
+  - bash-completion
+  - bat
+  - catimg
+  - dive
+  - ansible-lint
+  - git
+  - jq
+  - httpie
+  - mas
+  - mtr
+  - nmap
+  - koekeishiya/formulae/skhd
+  - tree
+  - yt-dlp
+  - zsh-syntax-highlighting
+
+  - python3
+  - pyenv
+  - node
+  - nvm
+  - n
+
+
+macos_apps_my_cask_apps:
+  - 1password
+  - 1password-cli
+  - anki
+  - cursor
+  - discord
+  - gimp
+  - google-drive
+  - losslesscut
+  - obs
+  - obsidian
+  - protonvpn
+  - sublime-text
+  - todoist
+  - tomatobar
+  - visual-studio-code
+  - whatsapp
+  - zoom
+
+
+macos_apps_apps_for_work:
+  - 1password
+  - 1password-cli
+  - cursor
+  - visual-studio-code
+  - fork
+  - dbeaver-community
+  - google-cloud-sdk
+  - slack
