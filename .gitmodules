@@ -1,12 +1,12 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
-[submodule "oh-my-zsh/custom/plugins/zsh-autosuggestions"]
-	path = oh-my-zsh/custom/plugins/zsh-autosuggestions
+[submodule "configs/oh-my-zsh/custom/plugins/zsh-autosuggestions"]
+	path = configs/oh-my-zsh/custom/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
-[submodule "oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
-	path = oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+[submodule "configs/oh-my-zsh/custom/plugins/zsh-syntax-highlighting"]
+	path = configs/oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting
-[submodule "oh-my-zsh/custom/plugins/zsh-history-substring-search"]
-	path = oh-my-zsh/custom/plugins/zsh-history-substring-search
+[submodule "configs/oh-my-zsh/custom/plugins/zsh-history-substring-search"]
+	path = configs/oh-my-zsh/custom/plugins/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search
