@@ -1,6 +1,8 @@
 bierner.markdown-preview-github-styles
+charliermarsh.ruff
 eamodio.gitlens
 foxundermoon.shell-format
+github.github-vscode-theme
 jannisx11.batch-rename-extension
 johnpapa.vscode-peacock
 mechatroner.rainbow-csv
@@ -11,3 +13,6 @@ ms-toolsai.vscode-jupyter-cell-tags
 ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-ssh-edit
 ms-vscode.remote-explorer
+ms-vscode.vscode-typescript-next
+redhat.vscode-yaml
+timonwong.shellcheck

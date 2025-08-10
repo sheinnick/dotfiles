@@ -15,6 +15,9 @@ ctrl - t : open -a 'Telegram Desktop'
 # open Chrome:
 ctrl - y : open -a "Google Chrome" --args --profile-directory="Default"
 
+# open Finder
+cmd - e: open ~/Downloads
+
 .blacklist [
     "iTerm"
     "terminal"
